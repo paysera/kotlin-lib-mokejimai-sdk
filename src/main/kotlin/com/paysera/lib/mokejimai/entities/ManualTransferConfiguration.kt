@@ -4,7 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class ManualTransferConfiguration(
     @SerializedName("from_bank_key")                var fromBankKey: String,
+    @SerializedName("from_bank_key_translation")    var fromBankKeyTranslation: String,
     @SerializedName("to_bank_key")                  var toBankKey: String,
+    @SerializedName("to_bank_key_translation")      var toBankKeyTranslation: String,
     @SerializedName("currency")                     var currency: String,
     @SerializedName("to_country_code")              var toCountryCode: String,
     @SerializedName("to_iban")                      var toIban: String,
@@ -12,6 +14,7 @@ data class ManualTransferConfiguration(
     @SerializedName("to_beneficiary_name")          var toBeneficiaryName: String,
     @SerializedName("commission")                   var commission: Commission,
     @SerializedName("transfer_execution_time")      var transferExecutionTime: String,
+    @SerializedName("transfer_execution_time_key")  var transferExecutionTimeKey: String,
 
     @SerializedName("from_country_code")            var fromCountryCode: String?,
     @SerializedName("to_account_number")            var toAccountNumber: String?,
