@@ -27,7 +27,6 @@ data class ManualTransferConfiguration(
     @SerializedName("commission_percent")           var commissionPercent: String?,
     @SerializedName("commission_max_amount")        var commissionMaxAmount: String?,
     @SerializedName("commission_min_amount")        var commissionMinAmount: String?,
-    @SerializedName("account_number")               var accountNumber: String?,
     @SerializedName("name")                         var name: String?
 )
 {
