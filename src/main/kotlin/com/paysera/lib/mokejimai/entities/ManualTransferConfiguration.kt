@@ -3,33 +3,35 @@ package com.paysera.lib.mokejimai.entities
 import com.google.gson.annotations.SerializedName
 
 data class ManualTransferConfiguration(
-    @SerializedName("from_bank_key")                var fromBankKey: String,
-    @SerializedName("to_bank_key")                  var toBankKey: String,
-    @SerializedName("currency")                     var currency: String,
-    @SerializedName("to_country_code")              var toCountryCode: String,
-    @SerializedName("to_iban")                      var toIban: String,
-    @SerializedName("to_bic")                       var toBic: String,
-    @SerializedName("to_beneficiary_name")          var toBeneficiaryName: String,
-    @SerializedName("commission")                   var commission: Commission,
-    @SerializedName("transfer_execution_time")      var transferExecutionTime: String,
+    var fromBankKey: String,
+    var fromBankKeyTranslation: String,
+    var toBankKey: String,
+    var toBankKeyTranslation: String,
+    var currency: String,
+    var toCountryCode: String,
+    var toIban: String,
+    var toBic: String,
+    var toBeneficiaryName: String,
+    var commission: Commission,
+    var transferExecutionTime: String,
+    var transferExecutionTimeKey: String,
 
-    @SerializedName("from_country_code")            var fromCountryCode: String?,
-    @SerializedName("to_account_number")            var toAccountNumber: String?,
-    @SerializedName("to_bank_code")                 var toBankCode: String?,
-    @SerializedName("sort_order")                   var sortOrder: String?,
-    @SerializedName("correspondent_bank_name")      var correspondentBankName: String?,
-    @SerializedName("correspondent_bank_swift")     var correspondentBankSwift: String?,
-    @SerializedName("correspondent_bank_address")   var correspondentBankAddress: String?,
-    @SerializedName("bank_address")                 var bankAddress: String?,
-    @SerializedName("commission_percent")           var commissionPercent: String?,
-    @SerializedName("commission_max_amount")        var commissionMaxAmount: String?,
-    @SerializedName("commission_min_amount")        var commissionMinAmount: String?,
-    @SerializedName("account_number")               var accountNumber: String?,
-    @SerializedName("name")                         var name: String?
+    var fromCountryCode: String?,
+    var toAccountNumber: String?,
+    var toBankCode: String?,
+    var sortOrder: String?,
+    var correspondentBankName: String?,
+    var correspondentBankSwift: String?,
+    var correspondentBankAddress: String?,
+    var bankAddress: String?,
+    var commissionPercent: String?,
+    var commissionMaxAmount: String?,
+    var commissionMinAmount: String?,
+    var name: String?
 )
 {
     data class Commission(
-        @SerializedName("amount")                   var amount: String,
-        @SerializedName("currency")                 var currency: String
+        var amount: String,
+        var currency: String
     )
 }
