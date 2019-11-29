@@ -11,8 +11,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
-class APIFactory(private val credentials: MokejimaiApiCredentials) {
+class APIFactory(private val credentials: MokejimaiApiCredentials, private val timeout: Long? = null) {
     fun createClient(
         tokenRefresherInterface: TokenRefresherInterface,
         baseUrl: String = "https://bank.paysera.com/"
@@ -34,6 +35,11 @@ class APIFactory(private val credentials: MokejimaiApiCredentials) {
     }
 
     private fun createOkHttpClient() = with(OkHttpClient().newBuilder()) {
+        timeout?.let {
+            readTimeout(it, TimeUnit.MILLISECONDS)
+            writeTimeout(it, TimeUnit.MILLISECONDS)
+            connectTimeout(it, TimeUnit.MILLISECONDS)
+        }
         addInterceptor { chain ->
             val originalRequest = chain.request()
             val builder =
