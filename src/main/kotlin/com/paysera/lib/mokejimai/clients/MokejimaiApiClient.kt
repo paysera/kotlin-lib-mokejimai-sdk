@@ -1,5 +1,6 @@
 package com.paysera.lib.mokejimai.clients
 
+import com.paysera.lib.mokejimai.entities.LogData
 import com.paysera.lib.mokejimai.entities.ManualTransferConfiguration
 import com.paysera.lib.mokejimai.entities.MetadataAwareResponse
 import com.paysera.lib.mokejimai.filters.ManualTransferConfigurationRequestFilter
@@ -13,8 +14,8 @@ import java.util.concurrent.TimeUnit.SECONDS
 
 
 class MokejimaiApiClient(
-        private val apiClient: APIClient,
-        private val tokenRefresherInterface: TokenRefresherInterface
+    private val apiClient: APIClient,
+    private val tokenRefresherInterface: TokenRefresherInterface
 ) {
 
     private val retryCondition = { errors: Flowable<Throwable> ->
@@ -34,24 +35,28 @@ class MokejimaiApiClient(
         }
     }
 
-    fun getManualTransferConfigurationList(filter: ManualTransferConfigurationRequestFilter)
-            : Single<MetadataAwareResponse<ManualTransferConfiguration>> {
+    fun postLog(logData: LogData): Single<LogData> {
+        return apiClient.postLog(logData).retryWhen(retryCondition)
+    }
+
+    fun getManualTransferConfigurationList(
+        filter: ManualTransferConfigurationRequestFilter
+    ): Single<MetadataAwareResponse<ManualTransferConfiguration>> {
         return apiClient
-                .getManualTransferConfigurationAsync(
-                        offset = filter.offset,
-                        limit = filter.limit,
-                        orderBy = filter.orderBy,
-                        orderDirection = filter.orderDirection,
-                        after = filter.after,
-                        before = filter.before,
-                        fromBankKey = filter.fromBankKey,
-                        fromCountryCode = filter.fromCountryCode,
-                        currency = filter.currency,
-                        toBankKey = filter.toBankKey,
-                        toCountryCode = filter.toCountryCode,
-                        toIban = filter.toIban,
-                        locale = filter.locale
-                )
-                .retryWhen(retryCondition)
+            .getManualTransferConfigurationAsync(
+                offset = filter.offset,
+                limit = filter.limit,
+                orderBy = filter.orderBy,
+                orderDirection = filter.orderDirection,
+                after = filter.after,
+                before = filter.before,
+                fromBankKey = filter.fromBankKey,
+                fromCountryCode = filter.fromCountryCode,
+                currency = filter.currency,
+                toBankKey = filter.toBankKey,
+                toCountryCode = filter.toCountryCode,
+                toIban = filter.toIban,
+                locale = filter.locale
+            ).retryWhen(retryCondition)
     }
 }

@@ -1,13 +1,20 @@
 package com.paysera.lib.mokejimai.retrofit
 
+import com.paysera.lib.mokejimai.entities.LogData
 import com.paysera.lib.mokejimai.entities.ManualTransferConfiguration
 import com.paysera.lib.mokejimai.entities.MetadataAwareResponse
 import io.reactivex.Single
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
-import java.util.*
 
 interface APIClient {
+
+    @POST("log/rest/v1/logs")
+    fun postLog(
+        @Body logData: LogData
+    ): Single<LogData>
 
     @GET("manual-transfer-configuration/rest/v1/configurations")
     fun getManualTransferConfigurationAsync(
@@ -24,5 +31,5 @@ interface APIClient {
         @Query("to_country_code") toCountryCode: String?,
         @Query("to_iban") toIban: String?,
         @Query("locale") locale: String?
-    ) : Single<MetadataAwareResponse<ManualTransferConfiguration>>
+    ): Single<MetadataAwareResponse<ManualTransferConfiguration>>
 }
