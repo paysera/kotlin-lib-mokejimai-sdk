@@ -29,6 +29,7 @@ interface APIClient {
         @Query("locale") locale: String?
     ): Single<MetadataAwareResponse<ManualTransferConfiguration>>
 
+    @FormUrlEncoded
     @POST("company-account/rest/v1/company-accounts")
     fun createCompanyAccount(
         @Field("manager_id") userId: Int,
