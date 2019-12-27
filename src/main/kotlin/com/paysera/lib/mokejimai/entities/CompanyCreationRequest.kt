@@ -2,16 +2,9 @@ package com.paysera.lib.mokejimai.entities
 
 import com.google.gson.annotations.SerializedName
 
-open class CompanyCreationRequest
-
-data class CompanyCreationRequestIdentifier (
+data class CompanyCreationRequest (
     @SerializedName("manager_id") val managerId: Int,
     @SerializedName("type") val type: String,
-    @SerializedName("company_identifier") val identifier: CompanyCreationType.CompanyIdentifier
+    @SerializedName("company_task") val task: CompanyCreationType.CompanyTask? = null,
+    @SerializedName("company_identifier") val identifier: CompanyCreationType.CompanyIdentifier? = null
 )
-
-data class CompanyCreationRequestTask (
-    @SerializedName("manager_id") val managerId: Int,
-    @SerializedName("type") val type: String,
-    @SerializedName("company_task") val identifier: CompanyCreationType.CompanyTask
-) : CompanyCreationRequest()
