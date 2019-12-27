@@ -8,7 +8,7 @@ data class CompanyCreationRequestIdentifier (
     @SerializedName("manager_id") val managerId: Int,
     @SerializedName("type") val type: String,
     @SerializedName("company_identifier") val identifier: CompanyCreationType.CompanyIdentifier
-) : CompanyCreationRequest()
+)
 
 data class CompanyCreationRequestTask (
     @SerializedName("manager_id") val managerId: Int,
