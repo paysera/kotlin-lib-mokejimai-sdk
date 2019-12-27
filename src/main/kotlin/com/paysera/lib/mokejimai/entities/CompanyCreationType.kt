@@ -10,9 +10,9 @@ sealed class CompanyCreationType {
     ) : CompanyCreationType()
 
     data class CompanyTask(
-        @SerializedName("id") val id: String,
+        val id: String,
         @SerializedName("country_code") val countryCode: String,
-        @SerializedName("solution") val solution: String
+        val solution: String
     ) : CompanyCreationType()
 
     fun getType(): String {

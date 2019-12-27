@@ -4,20 +4,18 @@ import com.google.gson.annotations.SerializedName
 
 data class CompanyCreationRequest(
     @SerializedName("manager_id") var managerId: Int,
-    @SerializedName("type") var type: String,
+    var type: String,
     @SerializedName("company_identifier") val identifier: CompanyCreationType.CompanyIdentifier? = null,
     @SerializedName("company_task") val task: CompanyCreationType.CompanyTask? = null
 ) {
 
     constructor(
         managerId: Int,
-        type: String,
-        identifier: CompanyCreationType.CompanyIdentifier? = null
-    ) : this(managerId, type, identifier, null)
+        identifier: CompanyCreationType.CompanyIdentifier
+    ) : this(managerId, identifier.getType(), identifier, null)
 
     constructor(
         managerId: Int,
-        type: String,
-        task: CompanyCreationType.CompanyTask? = null
-    ) : this(managerId, type, null, task)
+        task: CompanyCreationType.CompanyTask
+    ) : this(managerId, task.getType(), null, task)
 }
