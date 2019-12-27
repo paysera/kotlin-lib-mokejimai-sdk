@@ -7,6 +7,11 @@ import java.util.*
 
 interface APIClient {
 
+    @POST("log/rest/v1/logs")
+    fun postLog(
+        @Body logData: LogData
+    ): Single<LogData>
+
     @GET("manual-transfer-configuration/rest/v1/configurations")
     fun getManualTransferConfigurationAsync(
         @Query("offset") offset: Int?,
@@ -22,7 +27,7 @@ interface APIClient {
         @Query("to_country_code") toCountryCode: String?,
         @Query("to_iban") toIban: String?,
         @Query("locale") locale: String?
-    ) : Single<MetadataAwareResponse<ManualTransferConfiguration>>
+    ): Single<MetadataAwareResponse<ManualTransferConfiguration>>
 
     @POST("company-account/rest/v1/company-accounts")
     fun createCompanyAccount(
