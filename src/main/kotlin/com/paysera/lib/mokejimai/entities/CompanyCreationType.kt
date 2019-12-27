@@ -1,16 +1,18 @@
 package com.paysera.lib.mokejimai.entities
 
+import com.google.gson.annotations.SerializedName
+
 sealed class CompanyCreationType {
 
     data class CompanyIdentifier(
-        val countryCode: String,
-        val companyCode: String
+        @SerializedName("country_code") val countryCode: String,
+        @SerializedName("company_code") val companyCode: String
     ) : CompanyCreationType()
 
     data class CompanyTask(
-        val id: String,
-        val countryCode: String,
-        val solution: String
+        @SerializedName("id") val id: String,
+        @SerializedName("country_code") val countryCode: String,
+        @SerializedName("solution") val solution: String
     ) : CompanyCreationType()
 
     fun getType(): String {
