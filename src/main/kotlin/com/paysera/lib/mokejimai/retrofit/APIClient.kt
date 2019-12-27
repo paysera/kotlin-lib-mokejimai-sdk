@@ -31,7 +31,6 @@ interface APIClient {
 
     @POST("company-account/rest/v1/company-accounts")
     fun createCompanyAccount(
-        @Body request: CompanyCreationRequest,
-        @Body type: CompanyCreationType
+        @Body request: CompanyCreationRequest
     ): Single<CompanyAccount>
 }

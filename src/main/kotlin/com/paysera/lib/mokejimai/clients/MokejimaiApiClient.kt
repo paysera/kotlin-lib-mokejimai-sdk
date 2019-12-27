@@ -58,7 +58,7 @@ class MokejimaiApiClient(
             ).retryWhen(retryCondition)
     }
 
-    fun createCompanyAccount(request: CompanyCreationRequest, companyCreationType: CompanyCreationType): Single<CompanyAccount> {
-        return apiClient.createCompanyAccount(request, companyCreationType)
+    fun createCompanyAccount(request: CompanyCreationRequest): Single<CompanyAccount> {
+        return apiClient.createCompanyAccount(request)
     }
 }
