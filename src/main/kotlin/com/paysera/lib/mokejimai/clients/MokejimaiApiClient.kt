@@ -1,7 +1,6 @@
 package com.paysera.lib.mokejimai.clients
 
-import com.paysera.lib.mokejimai.entities.ManualTransferConfiguration
-import com.paysera.lib.mokejimai.entities.MetadataAwareResponse
+import com.paysera.lib.mokejimai.entities.*
 import com.paysera.lib.mokejimai.filters.ManualTransferConfigurationRequestFilter
 import com.paysera.lib.mokejimai.interfaces.TokenRefresherInterface
 import com.paysera.lib.mokejimai.retrofit.APIClient
@@ -53,5 +52,9 @@ class MokejimaiApiClient(
                         locale = filter.locale
                 )
                 .retryWhen(retryCondition)
+    }
+
+    fun createCompanyAccount(userId: Int, companyCreationType: CompanyCreationType): Single<CompanyAccount> {
+        return apiClient.createCompanyAccount(userId, companyCreationType.getType(), companyCreationType)
     }
 }

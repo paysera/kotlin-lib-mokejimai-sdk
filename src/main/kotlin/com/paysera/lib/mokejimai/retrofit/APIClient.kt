@@ -1,10 +1,8 @@
 package com.paysera.lib.mokejimai.retrofit
 
-import com.paysera.lib.mokejimai.entities.ManualTransferConfiguration
-import com.paysera.lib.mokejimai.entities.MetadataAwareResponse
+import com.paysera.lib.mokejimai.entities.*
 import io.reactivex.Single
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 import java.util.*
 
 interface APIClient {
@@ -25,4 +23,11 @@ interface APIClient {
         @Query("to_iban") toIban: String?,
         @Query("locale") locale: String?
     ) : Single<MetadataAwareResponse<ManualTransferConfiguration>>
+
+    @POST("company-account/rest/v1/company-accounts")
+    fun createCompanyAccount(
+        @Field("manager_id") userId: Int,
+        @Field("type") creationType: String,
+        @Body body: CompanyCreationType
+    ): Single<CompanyAccount>
 }
