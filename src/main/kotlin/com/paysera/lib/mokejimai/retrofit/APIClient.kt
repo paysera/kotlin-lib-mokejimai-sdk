@@ -1,5 +1,6 @@
 package com.paysera.lib.mokejimai.retrofit
 
+import com.paysera.lib.common.entities.MetadataAwareResponse
 import com.paysera.lib.mokejimai.entities.*
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
