@@ -9,7 +9,6 @@ import kotlinx.coroutines.Deferred
 
 class MokejimaiApiClient(
     private val apiClient: APIClient
-//    private val tokenRefresherInterface: TokenRefresherInterface
 ) : BaseApiClient {
 
     fun postLog(logData: LogData): Deferred<LogData> {

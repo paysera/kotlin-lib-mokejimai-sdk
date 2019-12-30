@@ -1,5 +1,7 @@
 package com.paysera.lib.mokejimai.filters
 
+import com.paysera.lib.common.entities.BaseFilter
+
 class ManualTransferConfigurationRequestFilter(
     offset: Int? = null,
     limit: Int? = null,
