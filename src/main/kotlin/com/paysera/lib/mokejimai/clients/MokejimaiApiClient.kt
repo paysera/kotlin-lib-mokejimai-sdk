@@ -1,47 +1,23 @@
 package com.paysera.lib.mokejimai.clients
 
-import com.paysera.lib.mokejimai.entities.LogData
-import com.paysera.lib.mokejimai.entities.ManualTransferConfiguration
-import com.paysera.lib.mokejimai.entities.MetadataAwareResponse
+import com.paysera.lib.common.entities.MetadataAwareResponse
+import com.paysera.lib.common.interfaces.BaseApiClient
+import com.paysera.lib.mokejimai.entities.*
 import com.paysera.lib.mokejimai.filters.ManualTransferConfigurationRequestFilter
-import com.paysera.lib.mokejimai.interfaces.TokenRefresherInterface
 import com.paysera.lib.mokejimai.retrofit.APIClient
-import io.reactivex.Flowable
-import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
-import retrofit2.HttpException
-import java.util.concurrent.TimeUnit.SECONDS
-
+import kotlinx.coroutines.Deferred
 
 class MokejimaiApiClient(
-    private val apiClient: APIClient,
-    private val tokenRefresherInterface: TokenRefresherInterface
-) {
+    private val apiClient: APIClient
+) : BaseApiClient {
 
-    private val retryCondition = { errors: Flowable<Throwable> ->
-        errors.flatMap {
-            val isUnauthorized = (it as? HttpException)?.code() == 401
-            if (isUnauthorized) {
-                synchronized(tokenRefresherInterface) {
-                    if (tokenRefresherInterface.isRefreshing()) {
-                        Flowable.timer(1, SECONDS).subscribeOn(Schedulers.io())
-                    } else {
-                        tokenRefresherInterface.refreshToken().toFlowable()
-                    }
-                }
-            } else {
-                Flowable.error(it)
-            }
-        }
-    }
-
-    fun postLog(logData: LogData): Single<LogData> {
-        return apiClient.postLog(logData).retryWhen(retryCondition)
+    fun postLog(logData: LogData): Deferred<LogData> {
+        return apiClient.postLog(logData)
     }
 
     fun getManualTransferConfigurationList(
         filter: ManualTransferConfigurationRequestFilter
-    ): Single<MetadataAwareResponse<ManualTransferConfiguration>> {
+    ): Deferred<MetadataAwareResponse<ManualTransferConfiguration>> {
         return apiClient
             .getManualTransferConfigurationAsync(
                 offset = filter.offset,
@@ -57,6 +33,10 @@ class MokejimaiApiClient(
                 toCountryCode = filter.toCountryCode,
                 toIban = filter.toIban,
                 locale = filter.locale
-            ).retryWhen(retryCondition)
+            )
+    }
+
+    fun createCompanyAccount(request: CompanyCreationRequest): Deferred<CompanyAccount> {
+        return apiClient.createCompanyAccount(request)
     }
 }

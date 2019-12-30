@@ -1,7 +1,5 @@
 package com.paysera.lib.mokejimai.entities
 
-import com.google.gson.annotations.SerializedName
-
 data class ManualTransferConfiguration(
     var fromBankKey: String,
     var fromBankKeyTranslation: String,
