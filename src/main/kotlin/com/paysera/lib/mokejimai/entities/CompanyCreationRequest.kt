@@ -1,7 +1,5 @@
 package com.paysera.lib.mokejimai.entities
 
-import com.google.gson.annotations.SerializedName
-
 data class CompanyCreationRequest(
     var managerId: Int,
     var type: String,
