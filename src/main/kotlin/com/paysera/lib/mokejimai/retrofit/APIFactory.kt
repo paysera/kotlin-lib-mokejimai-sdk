@@ -8,8 +8,11 @@ import com.paysera.lib.mokejimai.clients.MokejimaiApiClient
 class APIFactory(credentials: ApiCredentials, timeout: Long? = null) : BaseApiFactory<MokejimaiApiClient>(credentials, timeout) {
 
     override fun createClient(baseUrl: String, tokenRefresher: TokenRefresherInterface?): MokejimaiApiClient {
-        return MokejimaiApiClient(
-            createRetrofit(baseUrl, tokenRefresher).create(APIClient::class.java)
-        )
+        createRetrofit(baseUrl, tokenRefresher).apply {
+            return MokejimaiApiClient(
+                retrofit.create(APIClient::class.java),
+                apiRequestManager
+            )
+        }
     }
 }

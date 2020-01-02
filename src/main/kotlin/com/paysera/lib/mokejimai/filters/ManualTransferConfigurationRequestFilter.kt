@@ -17,10 +17,10 @@ class ManualTransferConfigurationRequestFilter(
     val toIban: String? = null,
     val locale: String? = null
 ) : BaseFilter(
-        offset = offset,
-        limit = limit,
-        orderBy = orderBy,
-        orderDirection = orderDirection,
-        after = after,
-        before = before
+    offset = offset,
+    limit = limit,
+    orderBy = orderBy,
+    orderDirection = orderDirection,
+    after = after,
+    before = before
 )
