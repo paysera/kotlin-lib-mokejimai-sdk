@@ -6,7 +6,6 @@ data class CompanyCreationRequest(
     val companyIdentifier: CompanyCreationType.CompanyIdentifier? = null,
     val companyTask: CompanyCreationType.CompanyTask? = null
 ) {
-
     constructor(
         managerId: Int,
         identifier: CompanyCreationType.CompanyIdentifier
