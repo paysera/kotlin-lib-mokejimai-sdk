@@ -5,7 +5,15 @@ import com.paysera.lib.common.interfaces.TokenRefresherInterface
 import com.paysera.lib.common.retrofit.BaseApiFactory
 import com.paysera.lib.mokejimai.clients.MokejimaiApiClient
 
-class APIFactory(credentials: ApiCredentials, timeout: Long? = null) : BaseApiFactory<MokejimaiApiClient>(credentials, timeout) {
+class APIFactory(
+    userAgent: String?,
+    credentials: ApiCredentials,
+    timeout: Long? = null
+) : BaseApiFactory<MokejimaiApiClient>(
+    userAgent,
+    credentials,
+    timeout
+) {
 
     override fun createClient(baseUrl: String, tokenRefresher: TokenRefresherInterface?): MokejimaiApiClient {
         createRetrofit(baseUrl, tokenRefresher).apply {
