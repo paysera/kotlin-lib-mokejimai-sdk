@@ -12,7 +12,8 @@ class APIFactory(
 ) : BaseApiFactory<MokejimaiApiClient>(
     userAgent,
     credentials,
-    timeout) {
+    timeout
+) {
 
     override fun createClient(baseUrl: String, tokenRefresher: TokenRefresherInterface?): MokejimaiApiClient {
         createRetrofit(baseUrl, tokenRefresher).apply {
