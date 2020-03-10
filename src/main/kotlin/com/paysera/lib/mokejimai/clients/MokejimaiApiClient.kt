@@ -41,4 +41,8 @@ class MokejimaiApiClient(
     fun createCompanyAccount(request: CompanyCreationRequest): Deferred<CompanyAccount> {
         return apiClient.createCompanyAccount(request)
     }
+
+    fun getUserAddresses() = apiClient.getUserAddresses()
+
+    fun updateUserLivingAddress(userAddress: UserAddress) = apiClient.updateUserLivingAddress(userAddress)
 }
