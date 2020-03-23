@@ -38,7 +38,7 @@ interface APIClient {
     fun getUserAddresses(): Deferred<MetadataAwareResponse<UserAddress>>
 
     @PUT("user/rest/v1/users/current/addresses/living_address")
-    fun updateUserLivingAddress(
+    fun updateUserAddress(
         @Body userAddress: UserAddress
     ): Deferred<UserAddress>
 }

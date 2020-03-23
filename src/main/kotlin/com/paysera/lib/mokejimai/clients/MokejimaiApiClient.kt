@@ -44,5 +44,5 @@ class MokejimaiApiClient(
 
     fun getUserAddresses() = apiClient.getUserAddresses()
 
-    fun updateUserLivingAddress(userAddress: UserAddress) = apiClient.updateUserLivingAddress(userAddress)
+    fun updateUserAddress(userAddress: UserAddress) = apiClient.updateUserAddress(userAddress)
 }
