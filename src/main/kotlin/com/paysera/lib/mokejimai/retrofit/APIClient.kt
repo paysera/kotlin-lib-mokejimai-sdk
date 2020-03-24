@@ -33,4 +33,12 @@ interface APIClient {
     fun createCompanyAccount(
         @Body request: CompanyCreationRequest
     ): Deferred<CompanyAccount>
+
+    @GET("user/rest/v1/users/current/addresses")
+    fun getUserAddresses(): Deferred<MetadataAwareResponse<UserAddress>>
+
+    @PUT("user/rest/v1/users/current/addresses/living_address")
+    fun updateUserAddress(
+        @Body userAddress: UserAddress
+    ): Deferred<UserAddress>
 }
