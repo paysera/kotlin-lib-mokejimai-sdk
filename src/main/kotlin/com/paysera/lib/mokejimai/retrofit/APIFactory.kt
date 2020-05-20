@@ -17,9 +17,11 @@ class APIFactory(
     timeout,
     httpLoggingInterceptorLevel
 ) {
+    override val baseUrl = "https://bank.paysera.com/"
+    override val certifiedHosts = listOf("bank.paysera.com")
 
-    override fun createClient(baseUrl: String, tokenRefresher: TokenRefresherInterface?): MokejimaiApiClient {
-        createRetrofit(baseUrl, tokenRefresher).apply {
+    override fun createClient(tokenRefresher: TokenRefresherInterface?): MokejimaiApiClient {
+        createRetrofit(tokenRefresher).apply {
             return MokejimaiApiClient(
                 retrofit.create(APIClient::class.java),
                 apiRequestManager
