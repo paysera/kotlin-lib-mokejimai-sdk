@@ -41,4 +41,9 @@ interface APIClient {
     fun updateUserAddress(
         @Body userAddress: UserAddress
     ): Deferred<UserAddress>
+
+    @GET("user-accounts/rest/v1/accounts/{userId}")
+    fun getUserAccounts(
+        @Path("userId") userId: Int
+    ): Deferred<MetadataAwareResponse<UserAccount>>
 }
