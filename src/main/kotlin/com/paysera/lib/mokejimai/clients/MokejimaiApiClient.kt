@@ -42,15 +42,23 @@ class MokejimaiApiClient(
         return apiClient.createCompanyAccount(request)
     }
 
-    fun getUserAddresses(): Deferred<MetadataAwareResponse<UserAddress>> {
-        return apiClient.getUserAddresses()
+    fun getCurrentUserAddresses(): Deferred<MetadataAwareResponse<UserAddress>> {
+        return apiClient.getCurrentUserAddresses()
     }
 
-    fun updateUserAddress(userAddress: UserAddress): Deferred<UserAddress> {
-        return apiClient.updateUserAddress(userAddress)
+    fun updateCurrentUserAddress(userAddress: UserAddress): Deferred<UserAddress> {
+        return apiClient.updateCurrentUserAddress(userAddress)
     }
 
     fun getUserAccounts(userId: Int): Deferred<MetadataAwareResponse<UserAccount>> {
         return apiClient.getUserAccounts(userId)
+    }
+
+    fun getUserAddresses(userId: Int): Deferred<MetadataAwareResponse<UserAddress>> {
+        return apiClient.getUserAddresses(userId)
+    }
+
+    fun updateUserAddress(userId: Int, userAddress: UserAddress): Deferred<UserAddress> {
+        return apiClient.updateUserAddress(userId, userAddress)
     }
 }
