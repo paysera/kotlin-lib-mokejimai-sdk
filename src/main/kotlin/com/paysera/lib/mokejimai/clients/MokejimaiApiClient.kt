@@ -54,11 +54,11 @@ class MokejimaiApiClient(
         return apiClient.getUserAccounts(userId)
     }
 
-    fun getUserAddresses(userId: Int): Deferred<MetadataAwareResponse<UserAddress>> {
+    fun getUserAddresses(userId: String): Deferred<MetadataAwareResponse<UserAddress>> {
         return apiClient.getUserAddresses(userId)
     }
 
-    fun updateUserAddress(userId: Int, userAddress: UserAddress): Deferred<UserAddress> {
+    fun updateUserAddress(userId: String, userAddress: UserAddress): Deferred<UserAddress> {
         return apiClient.updateUserAddress(userId, userAddress)
     }
 }

@@ -49,12 +49,12 @@ interface APIClient {
 
     @GET("user/rest/v1/users/{userId}/addresses")
     fun getUserAddresses(
-        @Path("userId") userId: Int
+        @Path("userId") userId: String
     ): Deferred<MetadataAwareResponse<UserAddress>>
 
     @PUT("user/rest/v1/users/{userId}/addresses/living_address")
     fun updateUserAddress(
-        @Path("userId") userId: Int,
+        @Path("userId") userId: String,
         @Body userAddress: UserAddress
     ): Deferred<UserAddress>
 }
