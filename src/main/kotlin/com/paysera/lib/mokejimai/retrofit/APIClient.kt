@@ -47,14 +47,15 @@ interface APIClient {
         @Path("userId") userId: Int
     ): Deferred<MetadataAwareResponse<UserAccount>>
 
-    @GET("user/rest/v1/users/{userId}/addresses")
+    @GET("user/rest/v1/users/{userIdentifier}/addresses")
     fun getUserAddresses(
-        @Path("userId") userId: String
+        @Path("userIdentifier") userIdentifier: String
     ): Deferred<MetadataAwareResponse<UserAddress>>
 
-    @PUT("user/rest/v1/users/{userId}/addresses/living_address")
+    @PUT("user/rest/v1/users/{userIdentifier}/addresses/{addressType}")
     fun updateUserAddress(
-        @Path("userId") userId: String,
+        @Path("userIdentifier") userIdentifier: String,
+        @Path("addressType") addressType: String,
         @Body userAddress: UserAddress
     ): Deferred<UserAddress>
 }

@@ -58,7 +58,7 @@ class MokejimaiApiClient(
         return apiClient.getUserAddresses(userId)
     }
 
-    fun updateUserAddress(userId: String, userAddress: UserAddress): Deferred<UserAddress> {
-        return apiClient.updateUserAddress(userId, userAddress)
+    fun updateUserAddress(userId: String, addressType: String, userAddress: UserAddress): Deferred<UserAddress> {
+        return apiClient.updateUserAddress(userId, addressType, userAddress)
     }
 }
