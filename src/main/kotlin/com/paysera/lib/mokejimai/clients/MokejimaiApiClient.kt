@@ -4,6 +4,7 @@ import com.paysera.lib.common.entities.MetadataAwareResponse
 import com.paysera.lib.common.retrofit.ApiRequestManager
 import com.paysera.lib.common.retrofit.BaseApiClient
 import com.paysera.lib.mokejimai.entities.*
+import com.paysera.lib.mokejimai.filters.IdentityDocumentsFilter
 import com.paysera.lib.mokejimai.filters.ManualTransferConfigurationRequestFilter
 import com.paysera.lib.mokejimai.retrofit.APIClient
 import kotlinx.coroutines.Deferred
@@ -60,5 +61,12 @@ class MokejimaiApiClient(
 
     fun updateUserAddress(userIdentifier: String, addressType: String, userAddress: UserAddress): Deferred<UserAddress> {
         return apiClient.updateUserAddress(userIdentifier, addressType, userAddress)
+    }
+
+    fun getAvailableIdentityDocuments(filter: IdentityDocumentsFilter): Deferred<MetadataAwareResponse<IdentityDocuments>> {
+        return apiClient.getAvailableIdentityDocuments(
+            country = filter.country,
+            limit = filter.limit
+        )
     }
 }
