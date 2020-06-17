@@ -66,6 +66,7 @@ class MokejimaiApiClient(
     fun getAvailableIdentityDocuments(filter: IdentityDocumentsFilter): Deferred<MetadataAwareResponse<IdentityDocuments>> {
         return apiClient.getAvailableIdentityDocuments(
             country = filter.country,
-            limit = filter.limit)
+            limit = filter.limit
+        )
     }
 }

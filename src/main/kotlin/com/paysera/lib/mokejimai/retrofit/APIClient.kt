@@ -61,7 +61,7 @@ interface APIClient {
 
     @GET("identification/rest/v1/identity-document-illustrations")
     fun getAvailableIdentityDocuments(
-        @Query("country") country: String?,
+        @Query("country") country: String,
         @Query("limit") limit: Int?
     ): Deferred<MetadataAwareResponse<IdentityDocuments>>
 }
