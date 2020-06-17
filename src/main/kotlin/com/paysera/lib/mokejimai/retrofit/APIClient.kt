@@ -58,4 +58,10 @@ interface APIClient {
         @Path("addressType") addressType: String,
         @Body userAddress: UserAddress
     ): Deferred<UserAddress>
+
+    @GET("identification/rest/v1/identity-document-illustrations")
+    fun getAvailableIdentityDocuments(
+        @Query("country") country: String?,
+        @Query("limit") limit: Int?
+    ): Deferred<MetadataAwareResponse<IdentityDocuments>>
 }
