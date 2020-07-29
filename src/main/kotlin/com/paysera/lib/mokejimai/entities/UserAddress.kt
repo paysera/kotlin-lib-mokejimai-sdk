@@ -8,6 +8,7 @@ data class UserAddress(
     var transliteratedCityName: String?,
     var postalCode: String,
     var legacyAddress: String?,
+    var legacyCityName: String?,
     var streetName: String,
     var houseNumber: String,
     var apartmentNumber: String
