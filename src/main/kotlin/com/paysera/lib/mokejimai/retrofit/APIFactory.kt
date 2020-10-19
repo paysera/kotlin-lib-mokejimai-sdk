@@ -10,7 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 class APIFactory(
     baseUrl: String,
     userAgent: String?,
-    credentials: ApiCredentials,
+    credentials: ApiCredentials?,
     certifiedHosts: List<String>,
     timeout: Long? = null,
     httpLoggingInterceptorLevel: HttpLoggingInterceptor.Level = HttpLoggingInterceptor.Level.BASIC,
