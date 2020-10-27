@@ -14,7 +14,7 @@ class APIFactory(
     certifiedHosts: List<String>,
     timeout: Long? = null,
     httpLoggingInterceptorLevel: HttpLoggingInterceptor.Level = HttpLoggingInterceptor.Level.BASIC,
-    errorLoggerInterface: ErrorLoggerInterface
+    errorLogger: ErrorLoggerInterface
 ) : BaseApiFactory<MokejimaiApiClient>(
     baseUrl,
     userAgent,
@@ -22,7 +22,7 @@ class APIFactory(
     certifiedHosts,
     timeout,
     httpLoggingInterceptorLevel,
-    errorLoggerInterface
+    errorLogger
 ) {
     override fun createClient(tokenRefresher: TokenRefresherInterface?): MokejimaiApiClient {
         createRetrofit(tokenRefresher).apply {
