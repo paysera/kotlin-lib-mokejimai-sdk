@@ -133,4 +133,10 @@ interface APIClient {
         @Path("id") id: String,
         @Body confirmContactEmailRequest: ConfirmContactEmailRequest
     ): Deferred<ContactEmail>
+
+
+    @GET("identity-document/rest/v1/identity-documents")
+    fun getIdentityDocuments(
+        @Query("user_id") userId: String
+    ): Deferred<MetadataAwareResponse<IdentityDocument>>
 }

@@ -151,4 +151,10 @@ class MokejimaiApiClient(
             confirmContactEmailRequest
         )
     }
+
+    fun getIdentityDocuments(
+        userId: String
+    ): Deferred<MetadataAwareResponse<IdentityDocument>> {
+        return apiClient.getIdentityDocuments(userId)
+    }
 }
