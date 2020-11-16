@@ -137,6 +137,8 @@ interface APIClient {
 
     @GET("identity-document/rest/v1/identity-documents")
     fun getIdentityDocuments(
-        @Query("user_id") userId: String
+        @Query("user_id") userId: String,
+        @Query("limit") limit: Int?,
+        @Query("offset") offset: Int?
     ): Deferred<MetadataAwareResponse<IdentityDocument>>
 }

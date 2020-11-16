@@ -1,5 +1,6 @@
 package com.paysera.lib.mokejimai.clients
 
+import com.paysera.lib.common.entities.BaseFilter
 import com.paysera.lib.common.entities.MetadataAwareResponse
 import com.paysera.lib.common.retrofit.ApiRequestManager
 import com.paysera.lib.common.retrofit.BaseApiClient
@@ -153,8 +154,13 @@ class MokejimaiApiClient(
     }
 
     fun getIdentityDocuments(
-        userId: String
+        userId: String,
+        filter: BaseFilter
     ): Deferred<MetadataAwareResponse<IdentityDocument>> {
-        return apiClient.getIdentityDocuments(userId)
+        return apiClient.getIdentityDocuments(
+            userId,
+            limit = filter.limit,
+            offset = filter.offset
+        )
     }
 }
