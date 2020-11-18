@@ -156,7 +156,7 @@ class MokejimaiApiClient(
     fun getIdentityDocuments(
         userId: String,
         filter: BaseFilter
-    ): Deferred<MetadataAwareResponse<IdentityDocument>> {
+    ): Deferred<MetadataAwareResponse<PSIdentityDocument>> {
         return apiClient.getIdentityDocuments(
             userId,
             limit = filter.limit,
