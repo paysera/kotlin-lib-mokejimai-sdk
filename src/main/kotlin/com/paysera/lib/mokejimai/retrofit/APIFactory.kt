@@ -9,6 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 
 class APIFactory(
     baseUrl: String,
+    locale: String,
     userAgent: String?,
     credentials: ApiCredentials?,
     certifiedHosts: List<String>,
@@ -17,6 +18,7 @@ class APIFactory(
     errorLogger: ErrorLoggerInterface
 ) : BaseApiFactory<MokejimaiApiClient>(
     baseUrl,
+    locale,
     userAgent,
     credentials,
     certifiedHosts,
