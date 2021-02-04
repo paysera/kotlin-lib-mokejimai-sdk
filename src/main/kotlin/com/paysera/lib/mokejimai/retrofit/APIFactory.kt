@@ -9,7 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 
 class APIFactory(
     baseUrl: String,
-    locale: String,
+    locale: String?,
     userAgent: String?,
     credentials: ApiCredentials?,
     certifiedHosts: List<String>,
