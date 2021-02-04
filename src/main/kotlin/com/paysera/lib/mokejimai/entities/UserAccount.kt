@@ -5,5 +5,5 @@ data class UserAccount(
     val identifier: String,
     val displayName: String?,
     val type: String,
-    val code: Long?
+    val code: String?
 )

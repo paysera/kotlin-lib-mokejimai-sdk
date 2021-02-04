@@ -3,6 +3,7 @@ package com.paysera.lib.mokejimai.retrofit
 import com.paysera.lib.common.entities.MetadataAwareResponse
 import com.paysera.lib.mokejimai.entities.*
 import kotlinx.coroutines.Deferred
+import retrofit2.Response
 import retrofit2.http.*
 
 interface APIClient {
@@ -58,4 +59,85 @@ interface APIClient {
         @Path("addressType") addressType: String,
         @Body userAddress: UserAddress
     ): Deferred<UserAddress>
+
+    @GET("identification/rest/v1/identity-document-illustrations")
+    fun getAvailableIdentityDocuments(
+        @Query("country") country: String,
+        @Query("limit") limit: Int?
+    ): Deferred<MetadataAwareResponse<IdentityDocuments>>
+
+    @GET("contact/rest/v1/phones")
+    fun getContactPhones(
+        @Query("user_id") id: String,
+        @Query("limit") limit: Int?,
+        @Query("offset") offset: Int?
+    ): Deferred<MetadataAwareResponse<ContactPhone>>
+
+    @GET("contact/rest/v1/emails")
+    fun getContactEmails(
+        @Query("user_id") id: String,
+        @Query("limit") limit: Int?,
+        @Query("offset") offset: Int?
+    ): Deferred<MetadataAwareResponse<ContactEmail>>
+
+    @DELETE("contact/rest/v1/phones/{id}")
+    fun deleteContactPhone(
+        @Path("id") id: String
+    ): Deferred<Response<Unit>>
+
+    @DELETE("contact/rest/v1/emails/{id}")
+    fun deleteContactEmail(
+        @Path("id") id: String
+    ): Deferred<Response<Unit>>
+
+    @POST("contact/rest/v1/phones")
+    fun addContactPhone(
+        @Body addContactPhoneRequest: AddContactPhoneRequest
+    ): Deferred<ContactPhone>
+
+    @POST("contact/rest/v1/emails")
+    fun addContactEmail(
+        @Body addContactEmailRequest: AddContactEmailRequest
+    ): Deferred<ContactEmail>
+
+    @PUT("contact/rest/v1/phones/{id}/main")
+    fun setContactPhoneAsMain(
+        @Path("id") id: String
+    ): Deferred<ContactPhone>
+
+    @PUT("contact/rest/v1/emails/{id}/main")
+    fun setContactEmailAsMain(
+        @Path("id") id: String
+    ): Deferred<ContactEmail>
+
+    @PUT("contact/rest/v1/phones/{id}/main")
+    fun setContactPhoneAsMain(
+        @Header("Authorization") authorizationHeaderValue: String,
+        @Path("id") id: String
+    ): Deferred<ContactPhone>
+
+    @PUT("contact/rest/v1/emails/{id}/main")
+    fun setContactEmailAsMain(
+        @Header("Authorization") authorizationHeaderValue: String,
+        @Path("id") id: String
+    ): Deferred<ContactEmail>
+
+    @PUT("contact/rest/v1/phones/{id}/confirm")
+    fun confirmContactPhone(
+        @Path("id") id: String,
+        @Body confirmContactPhoneRequest: ConfirmContactPhoneRequest
+    ): Deferred<ContactPhone>
+
+    @PUT("contact/rest/v1/emails/{id}/confirm")
+    fun confirmContactEmail(
+        @Path("id") id: String,
+        @Body confirmContactEmailRequest: ConfirmContactEmailRequest
+    ): Deferred<ContactEmail>
+
+    @GET("identity-document/rest/v1/identity-documents")
+    fun getIdentityDocuments(
+        @Query("user_id") userId: String,
+        @Query("limit") limit: Int?,
+        @Query("offset") offset: Int?
+    ): Deferred<MetadataAwareResponse<PSIdentityDocument>>
 }
