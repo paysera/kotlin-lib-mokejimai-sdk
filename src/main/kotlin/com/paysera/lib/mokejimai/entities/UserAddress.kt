@@ -11,5 +11,6 @@ data class UserAddress(
     var legacyCityName: String?,
     var streetName: String,
     var houseNumber: String,
-    var apartmentNumber: String
+    var apartmentNumber: String,
+    var updatedAt: Int?
 )
