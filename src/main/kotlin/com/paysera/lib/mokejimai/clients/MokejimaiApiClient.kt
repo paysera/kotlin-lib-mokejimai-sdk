@@ -62,7 +62,11 @@ class MokejimaiApiClient(
         return apiClient.getUserAddresses(userIdentifier)
     }
 
-    fun updateUserAddress(userIdentifier: String, addressType: String, userAddress: UserAddress): Deferred<UserAddress> {
+    fun updateUserAddress(
+        userIdentifier: String,
+        addressType: String,
+        userAddress: UserAddress
+    ): Deferred<UserAddress> {
         return apiClient.updateUserAddress(userIdentifier, addressType, userAddress)
     }
 
@@ -162,5 +166,13 @@ class MokejimaiApiClient(
             limit = filter.limit,
             offset = filter.offset
         )
+    }
+
+    fun disableAvatar(userId: String): Deferred<Response<Unit>> {
+        return apiClient.disableAvatar(userId)
+    }
+
+    fun uploadAvatar(uploadAvatarRequest: UploadAvatarRequest): Deferred<Response<Unit>> {
+        return apiClient.uploadAvatar(uploadAvatarRequest)
     }
 }
