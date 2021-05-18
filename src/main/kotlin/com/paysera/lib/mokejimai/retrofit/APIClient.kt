@@ -140,4 +140,14 @@ interface APIClient {
         @Query("limit") limit: Int?,
         @Query("offset") offset: Int?
     ): Deferred<MetadataAwareResponse<PSIdentityDocument>>
+
+    @PUT("avatar/rest/v1/avatars/{user_id}/disable")
+    fun disableAvatar(
+        @Path("user_id") userId: String
+    ): Deferred<Response<Unit>>
+
+    @PUT("avatar/rest/v1/avatars")
+    fun uploadAvatar(
+        @Body uploadAvatarRequest: UploadAvatarRequest
+    ) : Deferred<Response<Unit>>
 }
