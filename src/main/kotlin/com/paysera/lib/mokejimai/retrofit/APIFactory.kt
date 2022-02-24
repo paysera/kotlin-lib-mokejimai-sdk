@@ -1,6 +1,6 @@
 package com.paysera.lib.mokejimai.retrofit
 
-import com.paysera.lib.common.entities.ApiCredentials
+import com.paysera.lib.common.interfaces.BaseApiCredentials
 import com.paysera.lib.common.interfaces.ErrorLoggerInterface
 import com.paysera.lib.common.interfaces.TokenRefresherInterface
 import com.paysera.lib.common.retrofit.BaseApiFactory
@@ -11,7 +11,7 @@ class APIFactory(
     baseUrl: String,
     locale: String?,
     userAgent: String?,
-    credentials: ApiCredentials?,
+    credentials: BaseApiCredentials?,
     certifiedHosts: List<String>,
     timeout: Long? = null,
     httpLoggingInterceptorLevel: HttpLoggingInterceptor.Level = HttpLoggingInterceptor.Level.BASIC,
