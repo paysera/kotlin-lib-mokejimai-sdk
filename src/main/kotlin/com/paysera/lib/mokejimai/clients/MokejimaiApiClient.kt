@@ -70,8 +70,12 @@ class MokejimaiApiClient(
         return apiClient.updateUserAddress(userIdentifier, addressType, userAddress)
     }
 
-    fun getAvailableIdentityDocuments(filter: IdentityDocumentsFilter): Deferred<MetadataAwareResponse<IdentityDocuments>> {
+    fun getAvailableIdentityDocuments(
+        userIdentifier: String,
+        filter: IdentityDocumentsFilter
+    ): Deferred<MetadataAwareResponse<IdentityDocuments>> {
         return apiClient.getAvailableIdentityDocuments(
+            userIdentifier,
             country = filter.country,
             limit = filter.limit
         )
