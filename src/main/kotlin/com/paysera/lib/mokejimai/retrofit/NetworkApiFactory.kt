@@ -7,12 +7,11 @@ import com.paysera.lib.common.retrofit.BaseApiFactory
 import com.paysera.lib.mokejimai.clients.MokejimaiApiClient
 import okhttp3.logging.HttpLoggingInterceptor
 
-class APIFactory(
+class NetworkApiFactory(
     baseUrl: String,
     locale: String?,
     userAgent: String?,
     credentials: BaseApiCredentials?,
-    certifiedHosts: List<String>,
     timeout: Long? = null,
     httpLoggingInterceptorLevel: HttpLoggingInterceptor.Level = HttpLoggingInterceptor.Level.BASIC,
     errorLogger: ErrorLoggerInterface
@@ -21,7 +20,6 @@ class APIFactory(
     locale,
     userAgent,
     credentials,
-    certifiedHosts,
     timeout,
     httpLoggingInterceptorLevel,
     errorLogger
