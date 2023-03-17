@@ -1,5 +1,7 @@
 package com.paysera.lib.mokejimai.clients
 
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.GsonBuilder
 import com.paysera.lib.common.entities.BaseFilter
 import com.paysera.lib.common.entities.MetadataAwareResponse
 import com.paysera.lib.common.retrofit.ApiRequestManager
@@ -10,6 +12,7 @@ import com.paysera.lib.mokejimai.filters.IdentityDocumentsFilter
 import com.paysera.lib.mokejimai.filters.ManualTransferConfigurationRequestFilter
 import com.paysera.lib.mokejimai.retrofit.APIClient
 import kotlinx.coroutines.Deferred
+import retrofit2.HttpException
 import retrofit2.Response
 
 class MokejimaiApiClient(
@@ -178,5 +181,20 @@ class MokejimaiApiClient(
 
     fun uploadAvatar(uploadAvatarRequest: UploadAvatarRequest): Deferred<Response<Unit>> {
         return apiClient.uploadAvatar(uploadAvatarRequest)
+    }
+
+    suspend fun taxInformationMessages(userId: String): TaxInformationMessages {
+        val response = apiClient.taxInformationMessages(userId).await()
+        return if (response.isSuccessful()) {
+            GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .create()
+                .fromJson<TaxInformationMessages>(
+                    response.body()?.string() ?: "{}",
+                    TaxInformationMessages::class.java
+                )
+        } else {
+            throw HttpException(response)
+        }
     }
 }

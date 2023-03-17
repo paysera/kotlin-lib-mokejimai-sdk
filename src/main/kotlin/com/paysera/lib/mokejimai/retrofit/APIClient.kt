@@ -3,6 +3,7 @@ package com.paysera.lib.mokejimai.retrofit
 import com.paysera.lib.common.entities.MetadataAwareResponse
 import com.paysera.lib.mokejimai.entities.*
 import kotlinx.coroutines.Deferred
+import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -151,4 +152,9 @@ interface APIClient {
     fun uploadAvatar(
         @Body uploadAvatarRequest: UploadAvatarRequest
     ) : Deferred<Response<Unit>>
+
+    @GET("tax-information/rest/v1/tax-information-identifier-messages/{userId}")
+    fun taxInformationMessages(
+        @Path("userId") userId: String
+    ) : Deferred<Response<ResponseBody>>
 }
