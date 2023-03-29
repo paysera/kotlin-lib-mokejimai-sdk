@@ -3,9 +3,7 @@ package com.paysera.lib.mokejimai.entities
 import java.util.Date
 
 data class TaxInformationMessages(
-    val message: String?,
-    val messageCode: String?,
-    val tins: List<TinInformation>?
+    val messages: List<TinInformation>
 ) {
     data class TinInformation(
         val tin: Tin,
@@ -15,7 +13,6 @@ data class TaxInformationMessages(
     )
 
     data class Tin(
-        val id: String,
         val uuid: String?,
         val userId: String,
         val userType: String,
