@@ -6,8 +6,8 @@ data class TaxInformationMessages(
     val messages: List<TinInformation>
 ) {
     data class TinInformation(
-        val tin: Tin,
-        val expiresIn: Int,
+        val tin: Tin?,
+        val expiresIn: Int?,
         val message: String,
         val messageCode: String
     )
