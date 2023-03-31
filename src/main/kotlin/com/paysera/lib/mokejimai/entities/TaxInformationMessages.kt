@@ -1,5 +1,6 @@
 package com.paysera.lib.mokejimai.entities
 
+import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 data class TaxInformationMessages(
@@ -7,7 +8,8 @@ data class TaxInformationMessages(
 ) {
     data class TinInformation(
         val tin: Tin?,
-        val expiresIn: Int?,
+        @SerializedName("expires_in")
+        val expiresInDays: Int?,
         val message: String,
         val messageCode: String
     )
