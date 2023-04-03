@@ -151,4 +151,9 @@ interface APIClient {
     fun uploadAvatar(
         @Body uploadAvatarRequest: UploadAvatarRequest
     ) : Deferred<Response<Unit>>
+
+    @GET("tax-information/rest/v1/tax-information-identifier-messages/{userId}")
+    fun taxInformationMessages(
+        @Path("userId") userId: String
+    ) : Deferred<TaxInformationMessages>
 }

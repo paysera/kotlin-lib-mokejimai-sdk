@@ -179,4 +179,8 @@ class MokejimaiApiClient(
     fun uploadAvatar(uploadAvatarRequest: UploadAvatarRequest): Deferred<Response<Unit>> {
         return apiClient.uploadAvatar(uploadAvatarRequest)
     }
+
+    fun taxInformationMessages(userId: String): Deferred<TaxInformationMessages> {
+        return apiClient.taxInformationMessages(userId)
+    }
 }
