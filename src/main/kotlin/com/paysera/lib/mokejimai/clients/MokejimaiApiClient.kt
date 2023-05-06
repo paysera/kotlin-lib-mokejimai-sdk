@@ -183,4 +183,8 @@ class MokejimaiApiClient(
     fun taxInformationMessages(userId: String): Deferred<TaxInformationMessages> {
         return apiClient.taxInformationMessages(userId)
     }
+
+    fun createFacePhoto(identificationRequestId: Long): Deferred<FacePhoto> {
+        return apiClient.createFacePhoto(identificationRequestId)
+    }
 }
