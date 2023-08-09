@@ -151,4 +151,14 @@ interface APIClient {
     fun uploadAvatar(
         @Body uploadAvatarRequest: UploadAvatarRequest
     ) : Deferred<Response<Unit>>
+
+    @GET("tax-information/rest/v1/tax-information-identifier-messages/{userId}")
+    fun taxInformationMessages(
+        @Path("userId") userId: String
+    ) : Deferred<TaxInformationMessages>
+
+    @POST("identification/rest/v2/identification-request/{identification_request_id}/face-photo")
+    fun createFacePhoto(
+        @Path("identification_request_id") identificationRequestId: Long
+    ) : Deferred<FacePhoto>
 }
