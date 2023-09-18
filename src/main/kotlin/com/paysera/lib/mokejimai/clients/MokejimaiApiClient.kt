@@ -187,4 +187,8 @@ class MokejimaiApiClient(
     fun createFacePhoto(identificationRequestId: Long): Deferred<FacePhoto> {
         return apiClient.createFacePhoto(identificationRequestId)
     }
+
+    fun deactivateAccount(userId: String): Deferred<PSAccountDeactivation> {
+        return apiClient.deactivateAccount(userId)
+    }
 }

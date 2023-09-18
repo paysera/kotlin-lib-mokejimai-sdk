@@ -161,4 +161,9 @@ interface APIClient {
     fun createFacePhoto(
         @Path("identification_request_id") identificationRequestId: Long
     ) : Deferred<FacePhoto>
+
+    @PUT("user/rest/v1/users/{userId}/deactivate")
+    fun deactivateAccount(
+        @Path("userId") userId: String
+    ): Deferred<PSAccountDeactivation>
 }
